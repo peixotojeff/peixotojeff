@@ -1,4 +1,4 @@
-# Olá, sou eu! 👋
+# Olá, eu sou o Jefferson! 👋
 
 Sou apaixonado por dados e tecnologia, e adoro transformar números em insights que fazem a diferença. 🚀 Minha missão é usar dados para impulsionar decisões estratégicas e resultados de negócios.
 
