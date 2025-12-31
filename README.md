@@ -36,7 +36,25 @@ Quer trocar uma ideia sobre dados, tech ou até mesmo hobbies? Me chama no [GitH
 
 ---
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=peixotojeff&show_icons=true&theme=material-palenight)
+## Projetos em Destaque
+
+### [Dashboard de Análise MIS](https://oipeixoto.vercel.app/posts/dashboard-mis)
+
+- **Problema:** Falta de monitoramento eficiente dos principais KPIs do orçamento destinado às ações comerciais.
+- **Solução:** Implementação de integração de dados utilizando SQL para extração e Python para transformação e geração de dashboards visuais.
+- **Impacto:** Com a unificação e visualização dos dados, foi possível **reduzir em 15%** o desperdício de recursos em ações comerciais.
+
+<br />
+
+### [Agente de IA para WhatsApp: Assistente Personalizado](https://oipeixoto.vercel.app/blog/agentedenutricao)
+
+- **Problema:** Elevada taxa de churn entre os clientes de produtos.
+- **Solução:** Desenvolvimento de um agente personalizado (chatbot/IA) para acompanhar o histórico de compras e fornecer recomendações individualizadas de nutrição e produtos disponíveis na loja.
+- **Impacto:** **Redução de 10% na taxa de churn**, graças à entrega contínua de valor agregado e a uma experiência de compra diferenciada e personalizada.
+
+<br />
+
+Eu separei alguns [**projetos**](https://oipeixoto.vercel.app/projects) para dar uma olhada!
 
 
 Feito com ❤️ e muito café.
