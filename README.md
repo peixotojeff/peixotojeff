@@ -1,60 +1,108 @@
-# Olá, eu sou o Jefferson! 👋
+# Jefferson Peixoto — Senior Generative AI Engineer
 
-Sou apaixonado por dados e tecnologia, e adoro transformar números em insights que fazem a diferença. 🚀 Minha missão é usar dados para impulsionar decisões estratégicas e resultados de negócios.
+**Construindo sistemas multi-agente de produção com LangGraph, LLMOps e Human-in-the-Loop.**
 
-## Habilidades
+Atuo na interseção entre **Data Engineering**, **Machine Learning** e **Generative AI**, criando plataformas que transformam briefings não estruturados em workflows governados, auditáveis e mensuráveis de negócio.
 
-- 🔍 **Transformação e Análise de Dados**: Convertendo dados brutos em insights valiosos.
-- 🛠️ **Ferramentas de Análise**: SQL, Python, R.
-- 📊 **Visualização de Dados**: Tableau, Looker Studio, Power BI.
-- 📈 **Otimização de Campanhas**: Melhorando estratégias de marketing com dados.
-- 🎯 **Foco em Resultados**: Comprometido com melhorias contínuas e inovação.
-
-## Filosofia Profissional
-
-Para mim, dados bem interpretados são a chave para desbloquear o potencial de qualquer negócio. 🔑 Estou sempre buscando aprender e me adaptar em um mundo tech que não para de evoluir.
-
-## Hobbies
-
-Quando não estou mergulhado em dados, você me encontra:
-
-- 🎮 Jogando
-- 💻 Programando por diversão
-- 🎸 Tocando violão
-- 📚 Lendo um bom livro
-
-## Contato
-
-Quer trocar uma ideia sobre dados, tech ou até mesmo hobbies? Me chama no [GitHub](https://github.com/peixotojeff)! ou no [Linkedin](https://www.linkedin.com/in/peixotojeff/)!! 📬
+Atualmente liderando o desenvolvimento da **Helix**, uma plataforma de orquestração multi-agente nativa em LangGraph para operações de marketing B2B e BI no Grupo Studio.
 
 ---
 
-### Ferramentas que domino
+## Sobre Mim
 
-<img src="https://img.shields.io/badge/-SQL-4479A1?style=flat-square&logo=postgresql" alt="SQL" /> <img src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python" alt="Python" /> <img src="https://img.shields.io/badge/-R-276DC3?style=flat-square&logo=r" alt="R" /> <img src="https://img.shields.io/badge/-Tableau-E97627?style=flat-square" alt="Tableau" /> <img src="https://img.shields.io/badge/-Power%20BI-F2C811?style=flat-square&logo=bar-chart" alt="Power BI" /> <img src="https://img.shields.io/badge/-Excel-217346?style=flat-square&logo=microsoft-excel" alt="Excel" /> <img src="https://img.shields.io/badge/-n8n-4285F4?style=flat-square" alt="n8n" />
+Engenheiro de IA com foco em **sistemas agenticos escaláveis** e **LLMOps**. Minha expertise está em projetar, implementar e colocar em produção arquiteturas complexas de Generative AI que entregam impacto mensurável (redução de custo, tempo e dependência externa).
 
+Busco posições **Senior / Staff Generative AI Engineer** (Brasil ou remoto internacional) onde possa liderar tecnicamente iniciativas de alto impacto envolvendo agentes autônomos, RAG híbrido, avaliação de LLMs e governança de custo.
 
 ---
 
-## Projetos em Destaque
+## Habilidades Técnicas (Staff Level)
 
-### [Dashboard de Análise MIS](https://oipeixoto.vercel.app/posts/dashboard-mis)
+### Core Generative AI
+- **Multi-Agent Orchestration**: LangGraph (StateGraph, Supervisor, interrupt/resume), ReAct, dynamic routing
+- **LLM Engineering**: Gemini 2.5 Pro/Flash, Llama, Mistral, Claude, dynamic model routing + fallback
+- **Advanced RAG**: Hybrid Memory (Qdrant + Neo4j + Cognee), reranking, graph-aware retrieval
+- **Fine-tuning & Optimization**: LoRA/QLoRA, vLLM, Triton (em roadmap)
+- **Evaluation & Guardrails**: LLM-as-Judge, Ragas, ARES, cost tracking, quality gating
+- **Agentic Patterns**: Planning Supervisor, Tool Use, Memory Reflection, Human-in-the-Loop
 
-- **Problema:** Falta de monitoramento eficiente dos principais KPIs do orçamento destinado às ações comerciais.
-- **Solução:** Implementação de integração de dados utilizando SQL para extração e Python para transformação e geração de dashboards visuais.
-- **Impacto:** Com a unificação e visualização dos dados, foi possível **reduzir em 15%** o desperdício de recursos em ações comerciais.
+### MLOps / LLMOps
+- LangSmith, Phoenix, MLflow
+- FastAPI + WebSocket, PostgreSQL (AsyncPostgresSaver), Docker Compose
+- Cost governance (token-level + run-level), observabilidade distribuída
 
-<br />
+### Data & Backend
+- Python (avançado), SQL, Spark, Airflow (experiência)
+- React + Express (frontend/backend da Helix)
 
-### [Agente de IA para WhatsApp: Assistente Personalizado](https://oipeixoto.vercel.app/blog/agentedenutricao)
+### Arquitetura & Liderança Técnica
+- Trade-off analysis, ADRs, System Design de soluções GenAI em escala
+- Governança de custo, resiliência (circuit breaker, retry policies), state versioning
 
-- **Problema:** Elevada taxa de churn entre os clientes de produtos.
-- **Solução:** Desenvolvimento de um agente personalizado (chatbot/IA) para acompanhar o histórico de compras e fornecer recomendações individualizadas de nutrição e produtos disponíveis na loja.
-- **Impacto:** **Redução de 10% na taxa de churn**, graças à entrega contínua de valor agregado e a uma experiência de compra diferenciada e personalizada.
+---
 
-<br />
+## Projeto Principal: Helix — Multi-Agent Orchestration Platform
 
-Eu separei alguns [**projetos**](https://oipeixoto.vercel.app/projects) para dar uma olhada!
+**Plataforma de produção para workflows de marketing B2B com agentes especializados.**
 
+- **Arquitetura**: LangGraph State Machines + Supervisor (CEO Orchestrator) + Specialist Agents (Strategy, Content, SEO, Social, Visual, Review)
+- **Diferenciadores de produção**:
+  - Checkpoints persistentes com `AsyncPostgresSaver` + human approval
+  - Dynamic Model Routing (Pro → Flash)
+  - Hybrid Memory (Vector + Graph + Episodic)
+  - Cost Tracking por run/agent + Impact Dashboard (cost vs value)
+  - Evaluation Layer (LLM-as-Judge + Ragas)
 
-Feito com ❤️ e muito café.
+**Impacto Projetado**:
+- -78% no tempo de produção de campanhas
+- -65% na dependência de agências externas
+- Governança completa de custo e qualidade
+
+**Repositório**: [Helix](https://github.com/peixotojeff/helix) *(privado — disponível sob NDA)*
+
+**Artefatos Staff-level**:
+- [Technical One-Pager](docs/portfolio/technical_one_pager.md)
+- [15-min Presentation Deck](docs/portfolio/helix_15min_deck.md)
+- Architecture Decision Records (ADRs)
+
+---
+
+## Experiência Relevante
+
+**Grupo Studio** — *Análise de Power BI / GenAI Engineer*  
+Fev/2026 – Presente  
+- Liderança técnica do desenvolvimento da Helix (multi-agent platform)
+- Integrações de marketing + automações avançadas
+
+**BL BPO** — *Analista de MIS*  
+Nov/2024 – Set/2025  
+- Redução de 15% no desperdício de recursos via dashboards e análise
+
+**ReConverte** — *Cientista de Dados*  
+Jan/2023 – Nov/2023  
+- Redução de 10% de churn com agente de IA personalizado no WhatsApp
+
+---
+
+## Formação & Certificações
+
+- Formação Cientista de Dados — Alura (2023-2024)
+- Cursos avançados em LangChain, LangGraph, LLMOps e RAG (em andamento)
+
+---
+
+## Próximos Passos na Carreira (2026-2027)
+
+- Evoluir Helix para fully agentic (ReAct Planning Supervisor + memory reflection)
+- Implementar A/B testing de prompts e routing policies
+- Fortalecer portfólio com projetos open-source em Small Language Models e Multimodal Agents
+
+---
+
+**Aberto para oportunidades Senior/Staff em Generative AI.**
+
+Vamos conversar sobre como construir sistemas de IA que realmente impactam o negócio.
+
+📧 jefferson.peixoto@hotmail.com.br  
+🔗 [LinkedIn](https://www.linkedin.com/in/peixotojeff/)  
+📍 Porto Alegre, RS — Remoto / Híbrido / Internacional
