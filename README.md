@@ -103,6 +103,6 @@ Jan/2023 – Nov/2023
 
 Vamos conversar sobre como construir sistemas de IA que realmente impactam o negócio.
 
-📧 jefferson.peixoto@hotmail.com.br  
+📧 jefferson.-peixoto@hotmail.com.br  
 🔗 [LinkedIn](https://www.linkedin.com/in/peixotojeff/)  
 📍 Porto Alegre, RS — Remoto / Híbrido / Internacional
