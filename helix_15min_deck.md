@@ -1,143 +1,78 @@
+# Helix — Technical Deep Dive (15-Minute Narrative)
 
-# Helix — 15-Minute Presentation Deck
-
-## Slide 1 — Title
-
-**Helix: Multi-Agent Orchestration Platform**  
-Governed AI runs for B2B marketing operations at Grupo Studio.
-
-Speaker note: Position Helix as a production AI platform, not a prompt collection.
+**Documento para apresentação técnica (12-15 minutos)**  
+**Autor:** Jefferson Peixoto | Maio 2026
 
 ---
 
-## Slide 2 — The Business Problem
+## Introdução (1-2 min)
 
-- B2B campaign production depends on many handoffs.
-- Briefings lose context across strategy, copy, SEO, design, review, and approval.
-- External agency dependency adds cost and latency.
-- AI usage without governance is hard to measure, trust, or improve.
+Olá, meu nome é Jefferson Peixoto. Hoje vou apresentar o **Helix**, a plataforma multi-agent que estou construindo no Grupo Studio para transformar a forma como fazemos marketing B2B.
 
-Speaker note: Focus on operational friction and measurable cost of coordination.
+O principal problema que estamos resolvendo é a dependência excessiva de processos manuais e agências externas, com alto tempo de entrega e pouca consistência de marca. Helix transforma um briefing de negócio em um workflow completo e auditável, com agentes especializados, supervisão humana e métricas claras de custo e qualidade.
 
 ---
 
-## Slide 3 — What Helix Does
+## Contexto de Negócio (2 min)
 
-- Receives a business briefing.
-- Routes work through specialist agents.
-- Retrieves company and campaign memory.
-- Pauses for human approval when needed.
-- Tracks tokens, model spend, run quality, and estimated business impact.
-- Produces reusable outputs and learnings.
+No Grupo Studio, o time de marketing recebe dezenas de briefings por mês. O fluxo tradicional envolve múltiplos handoffs, revisão manual e produção externa, levando vários dias.
 
-Speaker note: Keep this concrete: one briefing becomes one auditable run.
+**Objetivo do Helix:**  
+Reduzir o tempo médio de produção para menos de 2 horas em campanhas comuns, mantendo ou elevando a qualidade, com total governança.
 
 ---
 
-## Slide 4 — Business Impact
+## Arquitetura Geral (3 min)
 
-- Projected 78% reduction in campaign production time.
-- Projected 65% reduction in external agency dependency.
-- Cost tracking per run, model, and agent.
-- Impact API estimates hours saved and BRL savings.
-- Next milestone: replace projections with metrics from 20-30 internal runs.
+Helix é construída nativamente sobre **LangGraph**, que oferece um modelo de state machine poderoso. Cada squad é um StateGraph, com um **CEO Orchestrator (Supervisor)** responsável por planejar, rotear e coordenar agentes especialistas (Strategy, Content, SEO, Social, Visual, Review, etc.).
 
-Speaker note: Be explicit that current headline numbers are projected until benchmarked.
-
----
-
-## Slide 5 — Architecture
-
-```text
-React Dashboard
-  -> Express Gateway
-  -> FastAPI Runtime
-  -> LangGraph StateGraphs
-  -> PostgreSQL Checkpoints
-  -> Hybrid Memory: Cognee + Neo4j + Qdrant
-  -> Evaluation + Impact APIs
-```
-
-Speaker note: The core architecture choice is durable graph state plus operator UI.
+**Decisões-chave de arquitetura:**
+- **LangGraph** ao invés de CrewAI/AutoGen: necessidade de checkpoints duráveis e human-in-the-loop.
+- **AsyncPostgresSaver**: permite pausar runs para aprovação humana e retomar mesmo após restart do serviço.
+- **Dynamic Model Routing**: tarefas complexas vão para Gemini 2.5 Pro, tarefas simples para Flash — com fallback automático.
+- **Hybrid Memory**: Qdrant (vetorial), Neo4j (grafos de relacionamento) e Cognee (camada semântica).
 
 ---
 
-## Slide 6 — Why LangGraph
+## Governança de Custo e Qualidade (3 min)
 
-- Explicit state machines instead of uncontrolled chat loops.
-- Durable `interrupt()` and `resume` for approvals.
-- Conditional routing through `route_fn`.
-- Node-level retry and failure-aware paths.
-- Better fit for auditable enterprise workflows than linear `AgentExecutor`.
+Um dos maiores riscos em produção com GenAI é o custo descontrolado. No Helix implementei:
 
-Speaker note: This is the main staff-level trade-off slide.
+- `CostTrackingCallback`: rastreia tokens e custo por call, agente, run e squad.
+- Impact Dashboard: correlaciona custo × score de qualidade × horas economizadas.
+- Evaluation Layer: LLM-as-Judge + Ragas para medir relevance, brand voice, faithfulness e actionability.
 
 ---
 
-## Slide 7 — CEO Orchestrator Pattern
+## Desafios Técnicos e Trade-offs (3 min)
 
-- Supervisor reads the briefing and context.
-- Specialist agents execute focused steps.
-- Supervisor routes, reviews, and decides next step.
-- Checkpoints stop the graph when human input is needed.
-- Future upgrade: ReAct/planning supervisor with dynamic tool access.
-
-Speaker note: Explain where autonomy exists and where governance constrains it.
+- **Resiliência:** Implementei retry por node, failure-aware routing e planejo circuit breakers.
+- **Memory:** Decidi por abordagem híbrida porque marketing exige tanto similaridade semântica quanto compreensão de relacionamentos de negócio.
+- **Human-in-the-Loop:** Essencial para aprovação final, mas complexo de implementar com estado consistente.
 
 ---
 
-## Slide 8 — Cost Governance
+## Roadmap Técnico Atual (2 min)
 
-- `CostTrackingCallback` records token usage and estimated spend.
-- Model routing sends simple work to Flash and complex reasoning to Pro.
-- `/api/impact/summary` connects spend with hours saved and quality.
-- Next: budget alerts, p95 latency, retry cost, and cost-per-output dashboards.
-
-Speaker note: Show that cost is managed as a product metric, not a billing surprise.
-
----
-
-## Slide 9 — Evaluation Framework
-
-- LLM-as-Judge scores relevance, completeness, brand voice, actionability, and accuracy.
-- Ragas hooks measure faithfulness and contextual precision for RAG outputs.
-- Results persist in `run_quality_summary`.
-- Next: task success rate, checkpoint intervention rate, approval rate, and A/B testing.
-
-Speaker note: Evaluation is the foundation for improving prompts and routing policies.
+Próximos 4-6 semanas:
+- Evoluir o Supervisor para padrão ReAct + Planning
+- Implementar agentic metrics (intervention rate, approval rate, turns to completion)
+- Adicionar budget alerts e adaptive routing
+- Memory reflection loop pós-aprovação
 
 ---
 
-## Slide 10 — Resilience
+## Conclusão e Competências Demonstradas (1-2 min)
 
-- PostgreSQL-backed graph persistence.
-- Retry wrapper per agent node.
-- Failure state returned to the graph instead of crashing the whole run.
-- Next: circuit breakers, adaptive retry, rate limiting, backpressure, and state versioning.
+Helix representa meu nível atual de maturidade técnica: capacidade de projetar, implementar e operar sistemas GenAI complexos em ambiente de produção, com forte alinhamento entre tecnologia e impacto de negócio.
 
-Speaker note: Tie resilience to long-running workflows and real human approval delays.
+Este projeto me permite demonstrar competências Staff-level em:
+- Arquitetura de Multi-Agent Systems
+- LLMOps (custo, avaliação, observabilidade)
+- System Design e trade-off decisions
+- Liderança técnica em projetos end-to-end
 
----
-
-## Slide 11 — Demo Flow
-
-1. Submit a briefing.
-2. Watch supervisor routing.
-3. Inspect agent outputs.
-4. Respond to checkpoint.
-5. Resume run.
-6. Review quality and cost metrics.
-
-Speaker note: The demo should be short and controlled. One successful run beats ten features.
+Estou à disposição para perguntas técnicas ou demonstração ao vivo.
 
 ---
-
-## Slide 12 — What Makes It Staff-Level
-
-- Clear product/business outcome.
-- Explicit architecture trade-offs.
-- Cost, quality, and reliability instrumentation.
-- Human-in-the-loop production workflow.
-- Roadmap from prototype to governed platform.
-
-Speaker note: End by framing Helix as platform engineering for applied AI.
+*Documento ideal para entrevistas Sênior/Staff ou apresentações internas.*
