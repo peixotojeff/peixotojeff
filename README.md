@@ -61,8 +61,8 @@ Busco posições **Senior / Staff Generative AI Engineer** (Brasil ou remoto int
 **Repositório**: [Helix](https://github.com/peixotojeff/helix) *(privado — disponível sob NDA)*
 
 **Artefatos Staff-level**:
-- [Technical One-Pager](docs/portfolio/technical_one_pager.md)
-- [15-min Presentation Deck](docs/portfolio/helix_15min_deck.md)
+- [Technical One-Pager](technical_one_pager.md)
+- [15-min Presentation Deck](helix_15min_deck.md)
 - Architecture Decision Records (ADRs)
 
 ---
