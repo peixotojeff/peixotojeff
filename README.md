@@ -1,4 +1,4 @@
-# Jefferson Peixoto — Senior Generative AI Engineer
+# Jefferson Peixoto — Mid Generative AI Engineer
 
 **Construindo sistemas multi-agente de produção com LangGraph, LLMOps e Human-in-the-Loop.**
 
